@@ -1,0 +1,21 @@
+h1 {
+  margin: 50px;
+  text-align: center;
+}
+body {
+  margin: 2em;
+}
+.linuxVersions ul {
+  text-align: center;
+  list-style: none;
+}
+.linuxVersions ul li .version-number {
+  background-color: #4cae4c;
+  border-radius: 2px;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+}
+.linuxVersions ul li .version-name {
+  font-weight: bold;
+}
