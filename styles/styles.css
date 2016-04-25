@@ -8,6 +8,9 @@ body {
 .linuxVersions {
   text-align: center;
 }
+.linuxVersions div {
+  margin-bottom: 5px;
+}
 .linuxVersions ul {
   text-align: center;
   list-style: none;

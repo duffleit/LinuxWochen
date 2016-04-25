@@ -6,14 +6,14 @@ import {Component} from 'angular2/core';
         <div class="linuxVersions">
             <h1>{{title}}</h1>
             
-            <input (click)="addYear()" type="button" value="add year to title"/>
-            
+            <div><input type="text" [(ngModel)]="title" ></div>        
+            <div><input (click)="addYear()" type="button" value="add year to title"/></div>
         </div>
     `
 })
 export class Main {
 
-    public title = "LinuxVersions";
+    public title = "LinuxVersionen";
 
     public addYear(){
         var currentYear = this.getCurrentYear();

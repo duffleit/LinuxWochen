@@ -20,7 +20,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         execute: function() {
             Main = (function () {
                 function Main() {
-                    this.title = "LinuxVersions";
+                    this.title = "LinuxVersionen";
                 }
                 Main.prototype.addYear = function () {
                     var currentYear = this.getCurrentYear();
@@ -32,7 +32,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 Main = __decorate([
                     core_1.Component({
                         selector: 'lw-app',
-                        template: "\n        <div class=\"linuxVersions\">\n            <h1>{{title}}</h1>\n            \n            <input (click)=\"addYear()\" type=\"button\" value=\"add year to title\"/>\n            \n        </div>\n    "
+                        template: "\n        <div class=\"linuxVersions\">\n            <h1>{{title}}</h1>\n            \n            <div><input type=\"text\" [(ngModel)]=\"title\" ></div>        \n            <div><input (click)=\"addYear()\" type=\"button\" value=\"add year to title\"/></div>\n        </div>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], Main);
