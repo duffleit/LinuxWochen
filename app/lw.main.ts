@@ -1,4 +1,6 @@
 import {Component} from 'angular2/core';
+import {LinuxVersionService} from "./LinuxVersionService";
+import {LinuxVersion} from "./linuxVersion";
 
 @Component({
     selector: 'lw-app',
@@ -6,23 +8,25 @@ import {Component} from 'angular2/core';
         <div class="linuxVersions">
             <h1>{{title}}</h1>
             
-            <div><input type="text" [(ngModel)]="title" ></div>        
-            <div><input (click)="addYear()" type="button" value="add year to title"/></div>
+            <ul *ngFor="#version of versions">
+                <li>
+                    <span class="version-name">{{version.name}}</span>
+                    <span class="version-number">{{version.number}}</span>
+                </li>
+            </ul>
         </div>
-    `
+    `,
+    providers: [LinuxVersionService]
 })
 export class Main {
 
+    constructor(private _linuxVersionService: LinuxVersionService) { }
+
+    get versions():Array<LinuxVersion> {
+        return this._linuxVersionService.getCurrentLinuxVersions();
+    }
+
     public title = "LinuxVersionen";
-
-    public addYear(){
-        var currentYear = this.getCurrentYear();
-        this.title = "LinuxVersion in " + currentYear;
-    }
-
-    private getCurrentYear() : number {
-        return (new Date()).getFullYear();
-    }
 }
 
 
