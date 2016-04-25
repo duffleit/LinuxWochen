@@ -6,12 +6,8 @@ import {Component} from 'angular2/core';
         <div class="linuxVersions">
             <h1>{{title}}</h1>
             
-            <ul *ngFor="#version of versions">
-                <li>
-                    <span class="version-name">{{version.name}}</span>
-                    <span class="version-number">{{version.number}}</span> 
-                </li>
-            </ul>
+            <input (click)="addYear()" type="button" value="add year to title"/>
+            
         </div>
     `
 })
@@ -19,12 +15,14 @@ export class Main {
 
     public title = "LinuxVersions";
 
-    public versions = [
-        { name: "Ubuntu", number: "1604"},
-        { name: "Linux Mint", number: "17.3"},
-        { name: "ElementaryOS", number: "0.3.2"},
-        { name: "Fedora", number: "23"}
-    ]
+    public addYear(){
+        var currentYear = this.getCurrentYear();
+        this.title = "LinuxVersion in " + currentYear;
+    }
+
+    private getCurrentYear() : number {
+        return (new Date()).getFullYear();
+    }
 }
 
 

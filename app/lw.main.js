@@ -21,17 +21,18 @@ System.register(['angular2/core'], function(exports_1, context_1) {
             Main = (function () {
                 function Main() {
                     this.title = "LinuxVersions";
-                    this.versions = [
-                        { name: "Ubuntu", number: "1604" },
-                        { name: "Linux Mint", number: "17.3" },
-                        { name: "ElementaryOS", number: "0.3.2" },
-                        { name: "Fedora", number: "23" }
-                    ];
                 }
+                Main.prototype.addYear = function () {
+                    var currentYear = this.getCurrentYear();
+                    this.title = "LinuxVersion in " + currentYear;
+                };
+                Main.prototype.getCurrentYear = function () {
+                    return (new Date()).getFullYear();
+                };
                 Main = __decorate([
                     core_1.Component({
                         selector: 'lw-app',
-                        template: "\n        <div class=\"linuxVersions\">\n            <h1>{{title}}</h1>\n            \n            <ul *ngFor=\"#version of versions\">\n                <li>\n                    <span class=\"version-name\">{{version.name}}</span>\n                    <span class=\"version-number\">{{version.number}}</span> \n                </li>\n            </ul>\n        </div>\n    "
+                        template: "\n        <div class=\"linuxVersions\">\n            <h1>{{title}}</h1>\n            \n            <input (click)=\"addYear()\" type=\"button\" value=\"add year to title\"/>\n            \n        </div>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], Main);

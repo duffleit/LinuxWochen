@@ -5,6 +5,9 @@ h1 {
 body {
   margin: 2em;
 }
+.linuxVersions {
+  text-align: center;
+}
 .linuxVersions ul {
   text-align: center;
   list-style: none;
