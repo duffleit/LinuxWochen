@@ -5,10 +5,10 @@ import {LinuxVersion} from "./linuxVersion";
 export class LinuxVersionService{
 
     private linuxVersions = [
-        { name: "Ubuntu", number: "1604"},
-        { name: "Linux Mint", number: "17.3"},
-        { name: "ElementaryOS", number: "0.3.2"},
-        { name: "Fedora", number: "23"}
+        { id: 0, name: "Ubuntu", number: "1604"},
+        { id: 1, name: "Linux Mint", number: "17.3"},
+        { id: 2, name: "ElementaryOS", number: "0.3.2"},
+        { id: 3, name: "Fedora", number: "23"}
     ]
 
     getCurrentLinuxVersions() : Array<LinuxVersion>{
@@ -18,8 +18,13 @@ export class LinuxVersionService{
 
     addLinuxVersion(name: string, version: string) : void {
         this.linuxVersions.push({
+            id: this.linuxVersions.length,
             name: name,
             number: version
         });
+    }
+
+    getLinuxVersion(id:number) : LinuxVersion{
+        return this.linuxVersions.filter(lv => lv.id === id)[0];
     }
 }

@@ -1,4 +1,4 @@
-System.register(['angular2/core', "./LinuxVersionService"], function(exports_1, context_1) {
+System.register(["angular2/core", "./LinuxVersionService", "angular2/router"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,8 +10,8 @@ System.register(['angular2/core', "./LinuxVersionService"], function(exports_1, 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, LinuxVersionService_1;
-    var Main;
+    var core_1, LinuxVersionService_1, router_1;
+    var VersionDetailComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -19,32 +19,32 @@ System.register(['angular2/core', "./LinuxVersionService"], function(exports_1, 
             },
             function (LinuxVersionService_1_1) {
                 LinuxVersionService_1 = LinuxVersionService_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
-            Main = (function () {
-                function Main(_linuxVersionService) {
+            VersionDetailComponent = (function () {
+                function VersionDetailComponent(_linuxVersionService, _routeParams) {
                     this._linuxVersionService = _linuxVersionService;
-                    this.title = "LinuxVersionen";
+                    this._routeParams = _routeParams;
                 }
-                Object.defineProperty(Main.prototype, "versions", {
-                    get: function () {
-                        return this._linuxVersionService.getCurrentLinuxVersions();
-                    },
-                    enumerable: true,
-                    configurable: true
-                });
-                Main = __decorate([
+                VersionDetailComponent.prototype.ngOnInit = function () {
+                    var id = +this._routeParams.get('id');
+                    this.version = this._linuxVersionService.getLinuxVersion(id);
+                };
+                VersionDetailComponent = __decorate([
                     core_1.Component({
-                        selector: 'lw-app',
-                        template: "\n        <div class=\"linuxVersions\">\n            <h1>{{title}}</h1>\n            \n            <ul *ngFor=\"#version of versions\">\n                <li>\n                    <span class=\"version-name\">{{version.name}}</span>\n                    <span class=\"version-number\">{{version.number}}</span>\n                </li>\n            </ul>\n        </div>\n    ",
+                        selector: 'lw-version-detail',
+                        template: "      \n        <div><b>Name</b> {{version.name}}</div>\n        <div><b>Number</b> {{version.number}}</div>\n        <div><b>Id</b> {{version.id}}</div>\n        ",
                         providers: [LinuxVersionService_1.LinuxVersionService]
                     }), 
-                    __metadata('design:paramtypes', [LinuxVersionService_1.LinuxVersionService])
-                ], Main);
-                return Main;
+                    __metadata('design:paramtypes', [LinuxVersionService_1.LinuxVersionService, router_1.RouteParams])
+                ], VersionDetailComponent);
+                return VersionDetailComponent;
             }());
-            exports_1("Main", Main);
+            exports_1("VersionDetailComponent", VersionDetailComponent);
         }
     }
 });
-//# sourceMappingURL=lw.main.js.map
+//# sourceMappingURL=lw.version-detail.component.js.map

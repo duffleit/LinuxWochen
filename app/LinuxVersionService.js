@@ -21,10 +21,10 @@ System.register(['angular2/core'], function(exports_1, context_1) {
             LinuxVersionService = (function () {
                 function LinuxVersionService() {
                     this.linuxVersions = [
-                        { name: "Ubuntu", number: "1604" },
-                        { name: "Linux Mint", number: "17.3" },
-                        { name: "ElementaryOS", number: "0.3.2" },
-                        { name: "Fedora", number: "23" }
+                        { id: 0, name: "Ubuntu", number: "1604" },
+                        { id: 1, name: "Linux Mint", number: "17.3" },
+                        { id: 2, name: "ElementaryOS", number: "0.3.2" },
+                        { id: 3, name: "Fedora", number: "23" }
                     ];
                 }
                 LinuxVersionService.prototype.getCurrentLinuxVersions = function () {
@@ -33,9 +33,13 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 };
                 LinuxVersionService.prototype.addLinuxVersion = function (name, version) {
                     this.linuxVersions.push({
+                        id: this.linuxVersions.length,
                         name: name,
                         number: version
                     });
+                };
+                LinuxVersionService.prototype.getLinuxVersion = function (id) {
+                    return this.linuxVersions.filter(function (lv) { return lv.id === id; })[0];
                 };
                 LinuxVersionService = __decorate([
                     core_1.Injectable(), 
